@@ -10,9 +10,10 @@ WorkBetter is a complete sample app showcasing the capabilities of JET for build
 
 ## Run 
 
-[Migrating a v2.x.0 Application to v3.1.0](http://docs.oracle.com/middleware/jet310/jet/developer/GUID-E3FF37C7-9B14-4C7F-AE4F-A25C6E394B84.htm#JETDG-GUID-E3FF37C7-9B14-4C7F-AE4F-A25C6E394B84)
+[Oracle JET v3.2.0 Tooling Migration](http://docs.oracle.com/middleware/jet320/jet/developer/GUID-F4E07884-1C35-4B7C-84E3-60F6D949D344.htm#JETDG-GUID-F4E07884-1C35-4B7C-84E3-60F6D949D344)
 
 ~~~
+npm install
 grunt build
 grunt serve
 ~~~
