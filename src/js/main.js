@@ -12,9 +12,9 @@ requirejs.config({
     'jquery': 'libs/jquery/jquery-3.1.1.min',
     'jqueryui-amd': 'libs/jquery/jqueryui-amd-1.12.0',
     'promise': 'libs/es6-promise/es6-promise.min',
-    'ojs': 'libs/oj/v3.1.0/min',
-    'ojL10n': 'libs/oj/v3.1.0/ojL10n',
-    'ojtranslations': 'libs/oj/v3.1.0/resources',
+    'ojs': 'libs/oj/v3.2.0/min',
+    'ojL10n': 'libs/oj/v3.2.0/ojL10n',
+    'ojtranslations': 'libs/oj/v3.2.0/resources',
     'signals': 'libs/js-signals/signals.min',
     'text': 'libs/require/text',
     'hammerjs': 'libs/hammer/hammer-2.0.8.min',
@@ -68,7 +68,7 @@ require([
     'ojs/ojmenu',
     'ojs/ojinputtext'
   ],
-  function(oj, ko, $, utils) {
+  function (oj, ko, $, utils) {
     var router = oj.Router.rootInstance;
     router.configure({
       'dashboard': {
@@ -83,11 +83,11 @@ require([
       },
       'person': {
         label: 'Person',
-        exit: function() {
+        exit: function () {
           var childRouter = router.currentState().value;
           childRouter.dispose();
         },
-        enter: function() {
+        enter: function () {
           var childRouter = router.createChildRouter('emp');
           childRouter.defaultStateId = '100';
           router.currentState().value = childRouter;
@@ -104,13 +104,13 @@ require([
       self.myPerson = ko.observableArray();
       self.ready = ko.observable(false);
 
-      self.optionChangeHandler = function(event, data) {
+      self.optionChangeHandler = function (event, data) {
         // Only go for user action events
         if (('ojAppNav' === event.target.id || 'ojAppNav2' === event.target.id) && event.originalEvent) {
           self.router.go(data.value);
         }
       };
-      self.getHomeURL = function() {
+      self.getHomeURL = function () {
         var baseURL = window.location.href;
         var end = baseURL.indexOf('?');
         var url;
@@ -132,7 +132,7 @@ require([
       self.small = oj.ResponsiveKnockoutUtils.createMediaQueryObservable(smQuery);
       self.smallOnly = oj.ResponsiveKnockoutUtils.createMediaQueryObservable(smOnlyQuery);
 
-      self.dynamicConfig = ko.pureComputed(function() {
+      self.dynamicConfig = ko.pureComputed(function () {
         if (self.smallOnly()) {
           return {
             name: 'phone/' + router.moduleConfig.name(),
@@ -146,11 +146,11 @@ require([
 
     oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
     oj.Router.sync().then(
-      function() {
+      function () {
         ko.applyBindings(new MainViewModel(), document.getElementById('globalBody'));
         $('#globalBody').show();
       },
-      function(error) {
+      function (error) {
         oj.Logger.error('Error in root start: ' + error.message);
       }
     );
